@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FPMarketsTrade</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/font.css">
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+    <script src="../js/translatePage.js"></script>
+</head>
+
+<body>
+    <div class="overlay">
+        <div id="signUp" class="popup popup_padding_s popup_margin">
+            <div class="popup__btn-close" id="popupClose"></div>
+            <h2 class="popup__title" localLng="signUp-title"></h2>
+            <form action="#" method="POST" class="form">
+                <div class="form__grid form__grid_gap">
+                    <input type="text" class="form__input" name="firstName" placeholder=""
+                        localLngplaceholder="signUp-placeholder-fname">
+                    <input type="text" class="form__input" name="lastName" placeholder=""
+                        localLngplaceholder="signUp-placeholder-lname">
+                    <div id="passwordBox">
+                        <input type="password" class="form__input" name="password" placeholder=""
+                            localLngplaceholder="signUp-placeholder-pass" id="signPassword">
+                        <img class="form__pass-img form__pass-img_show" src="../images/main/HidePassword.svg" alt=""
+                            id="hidePass" onClick="password.type = 'text'">
+
+                        <img class="form__pass-img form__pass-img_hidden" src="../images/main/showPassword.svg" alt=""
+                            id="showPass" onClick="password.type = 'password'">
+                    </div>
+                    <div id="passwordBox">
+                        <input type="password" class="form__input" name="passwordConfirm" placeholder=""
+                            localLngplaceholder="signUp-placeholder-confpass" id="signPasswordConfirm">
+                        <img class="form__pass-img form__pass-img_show" src="../images/main/HidePassword.svg" alt=""
+                            id="hidePass" onClick="passwordConfirm.type = 'text'">
+                        <img class="form__pass-img form__pass-img_hidden" src="../images/main/showPassword.svg" alt=""
+                            id="showPass" onClick="passwordConfirm.type = 'password'">
+                    </div>
+                    <div class="form__input-group grid-column--3">
+                        <div class="form__select form__input">
+                            <div class="form__select-phone-box ">
+                                <p id="textPhone">+44</p>
+                            </div>
+                            <ul class="form__list">
+
+                            </ul>
+                            <span class="form__select-phone-arrow"></span>
+                        </div>
+                        <input type="number" class="form__input form__input-phone" id="inputPhone" placeholder=""
+                            localLngplaceholder="signUp-placeholder-phone">
+                        <input type="hidden" id="phone" name="phone" value="">
+                    </div>
+                    <input type="email" class="form__input grid-column--3" name="email" id="signEmail" placeholder=""
+                        localLngplaceholder="signUp-placeholder-email">
+                    <input type="text" class="form__input" name="birthDate" placeholder=""
+                        localLngplaceholder="signUp-placeholder-date" onfocus="(this.type='date')"
+                        onblur="(this.type='text')">
+                    <input type="text" class="form__input grid-row--3" name="country" placeholder=""
+                        localLngplaceholder="signUp-placeholder-country">
+                    <input type="text" class="form__input grid-row--3" name="city" placeholder=""
+                        localLngplaceholder="signUp-placeholder-city">
+                </div>
+                <button class="form__button button button_small
+                                button_theme_sun
+                                header__button" localLng="signUp-btn"></button>
+            </form>
+        </div>
+        <div id="logIn" class="popup popup_padding_s popup_margin">
+            <div class="popup__btn-close" id="popupClose"></div>
+            <h2 class="popup__title" localLng="logIn-title"></h2>
+            <form action="#" method="POST" class="form">
+                <div class="form__grid form__grid_gap">
+                    <input type="email" class="form__input grid-column--3" name="email" id="LogInEmail" placeholder=""
+                        localLngPlaceholder="logIn-placeholder-email">
+                    <div id="passwordBox" class=" grid-column--3">
+                        <input type="password" class="form__input" name="password" placeholder="" id="password"
+                            localLngPlaceholder="logIn-placeholder-password">
+                        <img class="form__pass-img form__pass-img_show" src="../images/main/HidePassword.svg" alt=""
+                            id="hidePass">
+                        <img class="form__pass-img form__pass-img_hidden" src="../images/main/showPassword.svg" alt=""
+                            id="showPass">
+                    </div>
+                </div>
+                <a class="desc form__link" id="forgotPassBtn" localLng="logIn-forgpass"></a>
+                <button class="form__button button button_small
+                                    button_theme_sun
+                                    header__button" localLng="logIn-btn"></button>
+
+            </form>
+        </div>
+        <div id="emailResertPass" class="popup popup_padding_s popup_margin">
+            <div class="popup__btn-close" id="popupClose"></div>
+            <h2 class="popup__title" localLng="reset-title"></h2>
+            <p class="form__desc desc" style="margin-bottom: 1rem" localLng="reset-desc">
+            </p>
+            <form action="#" method="POST" class="form">
+                <div class="form__grid form__grid_gap">
+
+                    <input type="email" class="form__input grid-column--3" name="email" id="resEmail" placeholder=""
+                        localLngPlaceholder="reset-placeholder-email">
+                </div>
+                <button class="form__button button button_small
+                                    button_theme_sun
+                                    header__button" localLng="reset-btn"></button>
+            </form>
+        </div>
+        <div id="passwordResert" class="popup popup_padding_s popup_margin">
+            <div class="popup__btn-close" id="popupClose"></div>
+            <h2 class="popup__title" localLng="reset-pass-title"></h2>
+            <form action="#" method="POST" class="form">
+                <div class="form__grid form__grid_gap">
+                    <div id="passwordBox">
+                        <input type="password" class="form__input" name="password" placeholder=""
+                            localLngplaceholder="reset-pass-placeholder-1" id="resertPassword">
+                        <img class="form__pass-img form__pass-img_show" src="../images/main/HidePassword.svg" alt=""
+                            id="hidePass">
+                        <img class="form__pass-img form__pass-img_hidden" src="../images/main/showPassword.svg" alt=""
+                            id="showPass">
+                    </div>
+                    <div id="passwordBox">
+                        <input type="password" class="form__input" name="passwordConfirm" placeholder=""
+                            localLngplaceholder="reset-pass-placeholder-2" id="resertPasswordConfirm">
+                        <img class="form__pass-img form__pass-img_hidden" src="../images/main/HidePassword.svg" alt=""
+                            id="hidePass">
+                        <img class="form__pass-img form__pass-img_show" src="../images/main/showPassword.svg" alt=""
+                            id="showPass">
+                    </div>
+                </div>
+                <button class="form__button button button_small
+                                    button_theme_sun
+                                    header__button" localLng="reset-pass-btn"></button>
+
+            </form>
+        </div>
+    </div>
+    <div class="arrow-up" id="arrowTop" hidden>
+        <img src="../images/main/ArrowUp.svg" alt="">
+    </div>
+    <header class="header">
+        <div class="header__container">
+            <div class="header__body">
+                <nav class="nav header-nav">
+                    <div class="header__logo">
+                        <a href="../index.html">
+                            <img src="../images/main/logo.png" alt="logo" class="logo-img">
+                        </a>
+                    </div>
+                    <div class="lang lang-toggler-mobile">
+                        <img src="../images/main/deFlag.svg" alt="flag" class="lang__img" data-flag="deFlag">
+                        <ul class="lang__list">
+                            <li class="lang__item" data-flag="enFlag" data-google-lang="en">
+                                <img src="../images/main/enFlag.svg" alt="miniEngFlag" class="lang__item-icon">
+                                <p class="lang__name" translate="no">EN</p>
+                            </li>
+                            <li class="lang__item" data-flag="deFlag" data-google-lang="de">
+                                <img src="../images/main/deFlag.svg" alt="miniGerFlag" class="lang__item-icon">
+                                <p class="lang__name" translate="no">DE</p>
+                            </li>
+                            <li class="lang__item" data-flag="ruFlag" data-google-lang="ru">
+                                <img src="../images/main/ruFlag.svg" alt="miniGerFlag" class="lang__item-icon">
+                                <p class="lang__name" translate="no">RU</p>
+                            </li>
+                            <li class="lang__item" data-flag="frFlag" data-google-lang="fr">
+                                <img src="../images/main/frFlag.svg" alt="miniGerFlag" class="lang__item-icon">
+                                <p class="lang__name" translate="no">FR</p>
+                            </li>
+                            <li class="lang__item" data-flag="itFlag" data-google-lang="it">
+                                <img src="../images/main/itFlag.svg" alt="miniGerFlag" class="lang__item-icon">
+                                <p class="lang__name" translate="no">IT</p>
+                            </li>
+                            <li class="lang__item" data-flag="esFlag" data-google-lang="es">
+                                <img src="../images/main/esFlag.svg" alt="miniGerFlag" class="lang__item-icon">
+                                <p class="lang__name" translate="no">ES</p>
+                            </li>
+                            <li class="lang__item" data-flag="plFlag" data-google-lang="pl">
+                                <img src="../images/main/plFlag.svg" alt="miniGerFlag" class="lang__item-icon">
+                                <p class="lang__name" translate="no">PL</p>
+                            </li>
+                            <li class="lang__item" data-flag="csFlag" data-google-lang="cs">
+                                <img src="../images/main/csFlag.svg" alt="miniGerFlag" class="lang__item-icon">
+                                <p class="lang__name" translate="no">CS</p>
+                            </li>
+                            <li class="lang__item" data-flag="nlFlag" data-google-lang="nl">
+                                <img src="../images/main/nlFlag.svg" alt="miniGerFlag" class="lang__item-icon">
+                                <p class="lang__name" translate="no">NL</p>
+                            </li>
+                            <li class="lang__item" data-flag="arFlag" data-google-lang="ar">
+                                <img src="../images/main/arFlag.svg" alt="miniGerFlag" class="lang__item-icon">
+                                <p class="lang__name" translate="no">AR</p>
+                            </li>
+                        </ul>
+                        <span class="lang__row"></span>
+                    </div>
+                    <ul class="nav__list">
+                        <li class="nav__item">
+                            <a href="../index.html" class="nav__item-link
+                                                                                                        "
+                                localLng="h-nav-1"></a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="trading.html" class="nav__item-link  nav__item_active" localLng="h-nav-2"></a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="platform.html" class="nav__item-link" localLng="h-nav-3"></a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="about_us.html" class="nav__item-link" localLng="h-nav-4"></a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="support.html" class="nav__item-link" localLng="h-nav-5"></a>
+                        </li>
+
+                        <div class="lang lang-toggler">
+                            <img src="../images/main/enFlag.svg" alt="flag" class="lang__img" data-flag="enFlag">
+                            <ul class="lang__list">
+                                <li class="lang__item" data-flag="enFlag" data-google-lang="en">
+                                    <img src="../images/main/enFlag.svg" alt="miniEngFlag" class="lang__item-icon">
+                                    <p class="lang__name" translate="no">EN</p>
+                                </li>
+                                <li class="lang__item" data-flag="deFlag" data-google-lang="de">
+                                    <img src="../images/main/deFlag.svg" alt="miniGerFlag" class="lang__item-icon">
+                                    <p class="lang__name" translate="no">DE</p>
+                                </li>
+                                <li class="lang__item" data-flag="ruFlag" data-google-lang="ru">
+                                    <img src="../images/main/ruFlag.svg" alt="miniGerFlag" class="lang__item-icon">
+                                    <p class="lang__name" translate="no">RU</p>
+                                </li>
+                                <li class="lang__item" data-flag="frFlag" data-google-lang="fr">
+                                    <img src="../images/main/frFlag.svg" alt="miniGerFlag" class="lang__item-icon">
+                                    <p class="lang__name" translate="no">FR</p>
+                                </li>
+                                <li class="lang__item" data-flag="itFlag" data-google-lang="it">
+                                    <img src="../images/main/itFlag.svg" alt="miniGerFlag" class="lang__item-icon">
+                                    <p class="lang__name" translate="no">IT</p>
+                                </li>
+                                <li class="lang__item" data-flag="esFlag" data-google-lang="es">
+                                    <img src="../images/main/esFlag.svg" alt="miniGerFlag" class="lang__item-icon">
+                                    <p class="lang__name" translate="no">ES</p>
+                                </li>
+                                <li class="lang__item" data-flag="plFlag" data-google-lang="pl">
+                                    <img src="../images/main/plFlag.svg" alt="miniGerFlag" class="lang__item-icon">
+                                    <p class="lang__name" translate="no">PL</p>
+                                </li>
+                                <li class="lang__item" data-flag="csFlag" data-google-lang="cs">
+                                    <img src="../images/main/csFlag.svg" alt="miniGerFlag" class="lang__item-icon">
+                                    <p class="lang__name" translate="no">CS</p>
+                                </li>
+                                <li class="lang__item" data-flag="nlFlag" data-google-lang="nl">
+                                    <img src="../images/main/nlFlag.svg" alt="miniGerFlag" class="lang__item-icon">
+                                    <p class="lang__name" translate="no">NL</p>
+                                </li>
+                                <li class="lang__item" data-flag="arFlag" data-google-lang="ar">
+                                    <img src="../images/main/arFlag.svg" alt="miniGerFlag" class="lang__item-icon">
+                                    <p class="lang__name" translate="no">AR</p>
+                                </li>
+                            </ul>
+                            <span class="lang__row"></span>
+                        </div>
+                        <div class="buttons header__buttons">
+                            <button class="button button_very-small
+                                                                            button_theme_sky-transperent
+                                                                            header__button" id="logInBtn"
+                                localLng="logIn"></button>
+                            <button class="button button_very-small
+                                                                            button_theme_sun_react button_margin-left_m
+                                                                            header__button" id="signUpBtn"
+                                localLng="signUp"></button>
+                        </div>
+                    </ul>
+                    <div class="nav-toggler">
+                        <span class="nav-toggler__line1"></span>
+                        <span class="nav-toggler__line2"></span>
+                        <span class="nav-toggler__line3"></span>
+                    </div>
+                </nav>
+                <ul class="nav__list-mobile">
+                    <div class="buttons nav__mobile-buttons">
+                        <button class="button button_small
+                                                                        button_theme_sky-transperent
+                                                                        nav__mobile-btn" id="logInBtn"
+                            localLng="logIn"></button>
+                        <button class="button button_small
+                                                                        button_theme_sun_react button_margin-left_m
+                                                                        nav__mobile-btn" id="signUpBtn"
+                            localLng="signUp"></button>
+                    </div>
+                    <li class="nav__item">
+                        <a href="../index.html" class="nav__item-link
+                                                                                                "
+                            localLng="h-nav-1"></a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="trading.html" class="nav__item-link  nav__item_active" localLng="h-nav-2"></a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="platform.html" class="nav__item-link" localLng="h-nav-3"></a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="about_us.html" class="nav__item-link" localLng="h-nav-4"></a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="support.html" class="nav__item-link" localLng="h-nav-5"></a>
+                    </li>
+                </ul>
+                <div class="header__content-wrapper">
+                    <div class="header__content">
+                        <div class="header__content-text">
+                            <h1 class="title title_h1 header__title
+                                    " localLng="h-trading-title-1">
+                            </h1>
+                            <h1 class="title title_h1 header__title
+                                    header__title_margin_l" localLng="h-trading-title-2">
+                            </h1>
+                            <div>
+                                <ul class="header__desc header__desc-list">
+                                    <li class="header__desc-list-item" localLng="h-trading-desc-1"></li>
+                                    <li class="header__desc-list-item" localLng="h-trading-desc-2"></li>
+                                    <li class="header__desc-list-item" localLng="h-trading-desc-3"></li>
+                                    <li class="header__desc-list-item" localLng="h-trading-desc-4"></li>
+                                </ul>
+                            </div>
+                            <div class="buttons header__buttons">
+                                <button href="" class="button button_small
+                                        button_theme_sky header__button" id="logInBtn" localLng="logIn"></button>
+                                <button href="" class="button button_small
+                                        button_theme_sun button_margin-left_m
+                                        header__button" id="signUpBtn" localLng="signUp"></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <img class=" header__img header__img_width_s header__img_pos_center-left"
+            src="../images/trading/tradingHeader.png" alt="dd">
+        </img>
+    </header>
+    <main>
+        <div class="trading">
+            <div class="container">
+                <div class="trading__content">
+                    <h2 class="trading__title title
+                            title_h2" localLng="trading-title-1">
+                    </h2>
+                    <h2 class="trading__title trading__title_mg-btm_s title
+                                title_h2" localLng="trading-title-2">
+                    </h2>
+                    <p class="trading__desc desc" localLng="trading-desc">
+                    </p>
+                    <div class="trading__cards trading__cards_gap_s">
+                        <div class="trading__card">
+                            <div class="trading__card-bg
+                                    trading__card-bg_light-blue">
+                                <img src="../images/trading/card1.png" alt="" class="trading__card-img
+                                        trading__img_pos-left_s
+                                        trading__img_pos-bottom_xs">
+                            </div>
+                            <div class="trading__card-text">
+                                <h5 class="trading__card-title title
+                                        title_h5" localLng="trading-card-title-1">
+
+                                </h5>
+                                <p class="desc" localLng="trading-card-desc-1">
+
+                                </p>
+                            </div>
+                        </div>
+                        <div class="trading__card">
+                            <div class="trading__card-bg
+                                    trading__card-bg_pink">
+                                <img src="../images/trading/card2.png" alt="" class="trading__card-img
+                                        trading__img_pos-left_l
+                                        trading__img_pos-bottom_m">
+                            </div>
+                            <div class="trading__card-text">
+                                <h5 class="trading__card-title title
+                                        title_h5" localLng="trading-card-title-2">
+
+                                </h5>
+                                <p class="desc" localLng="trading-card-desc-2">
+
+                                </p>
+                            </div>
+                        </div>
+                        <div class="trading__card">
+                            <div class="trading__card-bg
+                                    trading__card-bg_purple">
+                                <img src="../images/trading/card3.png" alt="" class="trading__card-img
+                                        trading__img_pos-left_s
+                                        trading__img_pos-bottom_s">
+                            </div>
+                            <div class="trading__card-text">
+                                <h5 class="trading__card-title title
+                                        title_h5" localLng="trading-card-title-3">
+
+                                </h5>
+                                <p class="desc" localLng="trading-card-desc-3">
+                                </p>
+                            </div>
+                        </div>
+                        <div class="trading__card">
+                            <div class="trading__card-bg
+                                    trading__card-bg_blue">
+                                <img src="../images/trading/card4.png" alt="" class="trading__card-img
+                                        trading__img_pos-left_s
+                                        trading__img_pos-bottom_m">
+                            </div>
+                            <div class="trading__card-text">
+                                <h5 class="trading__card-title title
+                                        title_h5" localLng="trading-card-title-4">
+
+                                </h5>
+                                <p class="desc" localLng="trading-card-desc-4">
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="propose">
+            <div class="container">
+                <div class="propose__content">
+                    <h2 class="propose__title title title_h2" localLng="propose-title">
+                    </h2>
+                    <div class="propose__items">
+                        <div class="propose__item">
+                            <img src="../images/trading/propose1.svg" alt="" class="propose__icon">
+                            <h5 class="propose__item-title" localLng="propose-subtitle-1">
+                            </h5>
+                        </div>
+                        <div class="propose__item">
+                            <img src="../images/trading/propose2.svg" alt="" class="propose__icon">
+                            <h5 class="propose__item-title" localLng="propose-subtitle-2">
+                            </h5>
+                        </div>
+                        <div class="propose__item">
+                            <img src="../images/trading/propose3.svg" alt="" class="propose__icon">
+                            <h5 class="propose__item-title" localLng="propose-subtitle-3">
+                            </h5>
+                        </div>
+                        <div class="propose__item">
+                            <img src="../images/trading/propose4.svg" alt="" class="propose__icon">
+                            <h5 class="propose__item-title" localLng="propose-subtitle-4">
+                            </h5>
+                        </div>
+                        <div class="propose__item">
+                            <img src="../images/trading/propose5.svg" alt="" class="propose__icon">
+                            <h5 class="propose__item-title" localLng="propose-subtitle-5">
+                            </h5>
+                        </div>
+                        <div class="propose__item">
+                            <img src="../images/trading/propose6.svg" alt="" class="propose__icon">
+                            <h5 class="propose__item-title" localLng="propose-subtitle-6">
+                            </h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="article-wrapper article-wrapper_bg_elements">
+            <div class="container">
+                <h2 class="article-wrapper__title title title_h2" localLng="a-trading-wrpa-title">
+                </h2>
+                <div class="article">
+                    <img class="article__img article__img_margin_right"
+                        src="../images/main/articles/fundamentalAnalysis.png" alt="">
+                    <div class="article__text">
+                        <h3 class="article__title title title_h3" localLng="a-trading-title-1"></h3>
+                        <p class="article__desc article__desc_width_l" localLng="a-trading-desc-1">
+                        </p>
+                        <p class="article__desc article__desc_width_l" localLng="a-trading-desc-2">
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="article-wrapper article-wrapper_bg_sky-reverse">
+            <div class="container">
+                <div class="article article_reverse">
+                    <img class="article__img article__img_margin_left"
+                        src="../images/main/articles/technicalAnalysis.png" alt="">
+                    <div class="article__text">
+                        <h3 class="article__title title title_h3" localLng="a-trading-title-2"></h3>
+                        <p class="article__desc article__desc_width_s" localLng="a-trading-desc-3">
+                        </p>
+                        <p class="article__desc article__desc_width_s" localLng="a-trading-desc-4">
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="article-wrapper article-wrapper_bg_elements">
+            <div class="container">
+                <div class="article article">
+                    <img class="article__img article__img_margin_right"
+                        src="../images/main/articles/sentimentalAnalysis.png" alt="">
+                    <div class="article__text">
+                        <h3 class="article__title title title_h3" localLng="a-trading-title-3"></h3>
+                        <p class="article__desc article__desc_width_m" localLng="a-trading-desc-5">
+                        </p>
+                        <p class="article__desc article__desc_width_m" localLng="a-trading-desc-6">
+
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="stage">
+            <div class="container">
+                <h2 class="stage__title title title_h2" localLng="stage-title"></h2>
+                <p class="stage__desc desc" localLng="stage-desc-1">O</p>
+                <div class="stage__items">
+                    <div class="stage__item">
+                        <div class="stage__item-cycle">
+                            <h3 class="title title_h3 title_moon">1</h3>
+                        </div>
+                        <h5 class="stage__item-title title title_h5" localLng="stage-t-h5-1"></h5>
+                        <p class="stage__desc desc" localLng="stage-desc-2"></p>
+                    </div>
+                    <div class="stage__item">
+                        <div class="stage__item-cycle">
+                            <h3 class="title title_h3 title_moon">2</h3>
+                        </div>
+                        <h5 class="stage__item-title title title_h5" localLng="stage-t-h5-2"></h5>
+                        <p class="stage__desc desc" localLng="stage-desc-3"></p>
+                    </div>
+                    <div class="stage__item">
+                        <div class="stage__item-cycle">
+                            <h3 class="title title_h3 title_moon">3</h3>
+                        </div>
+                        <h5 class="stage__item-title title title_h5" localLng="stage-t-h5-3"></h5>
+                        <p class="stage__desc desc" localLng="stage-desc-4"></p>
+                    </div>
+                </div>
+                <div class="stage__buttons buttons">
+                    <button class="button button_small
+                                    button_theme_sky header__button " id="logInBtn" localLng="logIn"></button>
+                    <button class="button button_small
+                                    button_theme_sun button_margin-left_m
+                                    header__button " id="signUpBtn" localLng="signUp"></button>
+                </div>
+            </div>
+        </div>
+        <div class="questions">
+            <div class="questions__inner">
+                <img src="../images/main/questions-img.png" alt="" class="questions__img">
+                <div class="questions__text">
+                    <h2 class="title title_h2 title_moon" localLng="question-title-1">
+                    </h2>
+                    <h2 class="questions__title title title_h2 title_moon" localLng="question-title-2">
+
+                    </h2>
+                    <a href="support.html" class="question__button button button_small
+                            button_theme_sun" localLng="question-btn"></a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer__inner">
+            <div class="footer__items">
+                <div class="footer__item">
+                    <h5 class="footer__item-title title title_h5" localLng="footer-title-1"></h5>
+                    <ul class="footer__list footer__text">
+                        <li class="footer__list-item">
+                            <a href="clientAgreement.html" localLng="footer-link-1"></a>
+                        </li>
+                        <li class="footer__list-item">
+                            <a href="../files/FPWithdraw-Form.pdf" localLng="footer-link-2"></a>
+                        </li>
+                        <li class="footer__list-item"><a href="refundPolicy.html" localLng="footer-link-3"></a>
+                        </li>
+                        <li class="footer__list-item"><a href="about_us.html" localLng="footer-link-4"></a></li>
+                    </ul>
+                </div>
+                <div class="footer__item footer__text">
+                    <h5 class="footer__item-title title title_h5" localLng="footer-title-2"></h5>
+                    <ul class="footer__list">
+                        <li class="footer__list-item"><a href="termAndConditions.html" localLng="footer-link-5"></a>
+                        </li>
+                        <li class="footer__list-item"><a href="privacyPolicy.html" localLng="footer-link-6"></a>
+                        </li>
+                        <li class="footer__list-item"><a href="amlPolicy.html" localLng="footer-link-7"></a>
+                        </li>
+                        <li class="footer__list-item"><a href="exucutionPolicy.html" localLng="footer-link-8"></a></li>
+                    </ul>
+                </div>
+                <div class="footer__item footer__text">
+                    <h5 class="footer__item-title title title_h5" localLng="footer-title-3"></h5>
+                    <ul class="footer__list">
+                        <li class="footer__list-item"><a href="platform.html" localLng="footer-link-9"></a></li>
+                        <li class="footer__list-item" localLng="footer-link-10"></li>
+                        <li class="footer__list-item"><a href="mailto:
+                                        help@forexmaxi.com" localLng="footer-link-11"></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer__content-rigth">
+                <div class="footer__logo">
+                    <a href="index.html">
+                        <img src="../images/main/logo.png" alt="logo" class="logo-img">
+                    </a>
+                </div>
+                <div class="footer__imgs">
+                    <img src="../images/main/l1.png" alt="visa" class="footer__img">
+                    <img src="../images/main/l2.png" alt="mastercard" class="footer__img">
+                    <img src="../images/main/l3.png" alt="maestro" class="footer__img">
+                </div>
+                <p class="footer__text footer__text_align_center" localLng="footer-right-desc">
+                </p>
+            </div>
+        </div>
+    </footer>
+</body>
+<script src="../js/langArr.js"></script>
+<script src="../js/overlayForm.js"></script>
+<script src="../js/listFlags.js"></script>
+<script>
+    const menuToggler = document.querySelector('.nav-toggler')
+    const menu = document.querySelector('.nav__list-mobile')
+
+    menuToggler.addEventListener('click', _ => {
+        menuToggler.classList.toggle('nav-toggler_active')
+        menu.classList.toggle('nav__list-mobile_active')
+        closeMenu()
+    })
+
+    const closeMenu = () => {
+        document.addEventListener('touchend', e => {
+            if (!e.target.closest('nav-toggler')) {
+                if ((!e.target.closest('nav__list-mobile') || e.target.closest('buttons')) && menu.classList.contains('nav__list-mobile_active')) {
+                    menuToggler.classList.toggle('nav-toggler_active')
+                    menu.classList.toggle('nav__list-mobile_active')
+                }
+            }
+        })
+    }
+
+    arrowTop.onclick = function () {
+        window.scrollTo(pageXOffset, 0);
+    };
+
+    window.addEventListener('scroll', function () {
+        arrowTop.hidden = (pageYOffset < 200);
+    });
+</script>
+
+</html>
