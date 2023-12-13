@@ -2304,6 +2304,10 @@ input[name="passwordConfirm"] {
         padding: 0;
     }
 
+    #signUp{
+        margin-top: 0!important;
+    }
+
     .popup_margin {
         margin: 25% 0 0 0;
     }
